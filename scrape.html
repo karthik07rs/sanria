@@ -1,0 +1,303 @@
+<!DOCTYPE html>
+<html lang="en" xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Bootstrap Example</title>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/css/bootstrap.min.css">
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.4.0/jquery.min.js"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.0/js/bootstrap.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.js"></script>
+    <script src="https://cdn.datatables.net/1.10.19/js/jquery.dataTables.min.js"></script>
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.10.19/css/jquery.dataTables.min.css">
+    <script src="https://cdn.datatables.net/buttons/1.5.6/js/dataTables.buttons.min.js"></script>
+    <link href="https://stackpath.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <style>
+        .top_header{
+                padding-top: 5em;
+        }
+    header {
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        background-color: #4C4;
+        height: 50px;
+    }
+    .footer {
+      position: fixed;
+      left: 0;
+      bottom: 0;
+      width: 100%;
+      background-color: #4C4;
+      color: white;
+      text-align: center;
+    }
+
+    .dt-button{
+        width: 6em;
+        color: #fff;
+        background-color: #5bc0de;
+        border-color: #46b8da;
+        display: inline-block;
+        margin-bottom: 0;
+        font-weight: 400;
+        text-align: center;
+        white-space: nowrap;
+        vertical-align: middle;
+        touch-action: manipulation;
+        cursor: pointer;
+        background-image: none;
+        border: 1px solid transparent;
+        padding: 6px 12px;
+        line-height: 1.42857143;
+        border-radius: 4px;
+    }
+    </style>
+</head>
+<body>
+<header>
+
+</header>
+    <div class="container">
+        <div class="top_header">
+            <div class="row">
+                <div class="col-md-3">
+                  <div class="input-group">
+                        <span class="input-group-addon" style="font-size: 12px;"><i class="glyphicon glyphicon-search"></i></span>
+                        <input id="password" type="search" class="form-control" name="search" placeholder="Search" style="height: 2em;">
+                  </div>
+                </div>
+                <div class="col-md-3" style=" padding-left: 0;">
+                    <button type="button" class="btn btn-info" style="height: 2.5em;font-size: 12px;">Submit</button>
+                </div>
+            </div>
+            <br>
+            <div class="row">
+                <div class="col-md-3">
+                    <input id="_ga"  class="form-control" name="_ga" placeholder="_ga" style="height: 2em;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input id="AMCV_4"  class="form-control" name="AMCV_4" placeholder="AMCV_4" style="height: 2em;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input id="AMCV_A6"  class="form-control" name="AMCV_A6" placeholder="AMCV_A6" style="height: 2em;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input id="ASP.NET_SessionId"  class="form-control" name="ASP.NET_SessionId" placeholder="ASP.NET_SessionId" style="height: 2em;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input id="s_channelstack"  class="form-control" name="s_channelstack" placeholder="s_channelstack" style="height: 2em;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input id="s_fid"  class="form-control" name="s_fid" placeholder="s_fid" style="height: 2em;">
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-md-3">
+                    <input id="s_vi"  class="form-control" name="s_vi" placeholder="s_vi" style="height: 2em;">
+                </div>
+            </div>
+            <br>
+            <button type="button" class="btn btn-info" style="height: 2.5em;font-size: 12px;"  id="set_session" onclick="set_all_seesion()">set session</button>
+            <div class="row">
+                <div style="padding-top: 2em;">
+                    <div class="col-md-12">
+                        <table id="example" class="display" width="100%" style="    border: 1px solid cadetblue;"></table>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+<!-- Modal -->
+  <div class="modal fade" id="myModal" role="dialog">
+    <div class="modal-dialog">
+
+      <!-- Modal content-->
+      <div class="modal-content">
+        <div class="modal-header">
+          <button type="button" class="close" data-dismiss="modal">&times;</button>
+          <h4 class="modal-title">Modal Header</h4>
+        </div>
+        <div class="modal-body">
+                  <select class="form-control" style="height: 2.25em;" id="drop_down_value">
+                      <option value="">Select Item</option>
+                      <option value="Y">Valid</option>
+                      <option value="N">In-valid</option>
+                </select>
+                <br>
+                <label>Mass update</label> <input type="checkbox" id="CheckBox">
+                <br>
+                <br>
+                <button type="button" class="btn btn-info" style="height: 2.5em;font-size: 12px;"  id="row_update">Update</button>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+        </div>
+      </div>
+
+    </div>
+  </div>
+
+
+
+    </div>
+<script>
+function upload() {
+	header = w.Header()
+	header.Add("Access-Control-Allow-Origin", "*")
+	header.Add("Access-Control-Allow-Methods", "DELETE, POST, GET, OPTIONS")
+	header.Add("Access-Control-Allow-Headers", "Content-Type, Access-Control-Allow-Headers, Authorization, X-Requested-With")
+
+}         
+upload();
+</script>
+<script>
+
+
+$(document).ready(function() {
+        var table = $('#example').DataTable( {
+             dom: 'Bfrtip',
+             "ajax": {
+                "url": "http://gcsdocs.corp.emc.com/svc/getMyRecs/1/W/Connectivity%20Refusal/25989105/?adm=1&sd=2019-05-27&ed=2019-06-26&_search=false&nd=1561489867194&rows=20&page=1&sidx=&sord=asc",
+                 headers: {
+                    'Authorization': 'NTLMTlRMTVNTUAADAAAAGAAYAIYAAABeAV4BngAAAAgACABYAAAADAAMAGAAAAAaABoAbAAAAAAAAAD8AQAABYKIogoAOTgAAAAP1JOeXya+TVHYd8S70bPBqkMATwBSAFAAbgBhAHYAYQBsAGMASQBOAEcAUwBOAEEAVgBBAEwAQwBMADEAQwAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAABeSnAhqLezQr3GJKhTZ5Y8AQEAAAAAAACiZLq+iSvVAUNOlaW1n6OcAAAAAAIACABDAE8AUgBQAAEAEgBJAEEAUwBGAFQATwBPAEwAUwAEABgAYwBvAHIAcAAuAGUAbQBjAC4AYwBvAG0AAwAsAEkAQQBTAEYAVABPAE8ATABTAC4AYwBvAHIAcAAuAGUAbQBjAC4AYwBvAG0ABQAeAGUAbQBjAHIAbwBvAHQALgBlAG0AYwAuAGMAbwBtAAcACACiZLq+iSvVAQYABAAGAAAACAAwADAAAAAAAAAAAQAAAAAgAACHgdBKeeyWX28TKLh5BiJk2Gb7bUq27RSZrVlVk3I5JAoAEAAAAAAAAAAAAAAAAAAAAAAACQA2AEgAVABUAFAALwBJAEEAUwBGAFQATwBPAEwAUwAuAGMAbwByAHAALgBlAG0AYwAuAGMAbwBtAAAAAAAAAAAAAAAAAA=='
+                },
+                "dataSrc":function ( json ) {
+                      data_set = []
+                      for ( var i=0, ien=json.rows.length ; i<ien ; i++ ) {
+                        value_data = json.rows[i] ;
+                        var object = [value_data.Product, value_data.category, value_data.country,
+                                     value_data.creator, value_data.customer, value_data.dateCreated,
+                                     value_data.dde, value_data.district, value_data.fco,
+                                     value_data.fileCnt, value_data.fssName, value_data.isDeleted,
+                                     value_data.isValid, value_data.location, value_data.other,
+                                     value_data.other2, value_data.other3, value_data.partyId,
+                                     value_data.productRefusal, value_data.rdid, value_data.recId1,
+                                     value_data.recId2, value_data.refusalEmail, value_data.refusalName,
+                                     value_data.refusalReason, value_data.refusalTitle, value_data.region,
+                                     value_data.repositoryId, value_data.siteRefusal, value_data.snCreated,
+                                     value_data.srType, value_data.title];
+                         data_set.push(object)
+                      }
+                      return data_set;
+                    }
+                },
+                buttons: [
+                    {
+                    text: 'Edit',
+                    action: function ( e, dt, node, config ) {
+                       /* alert( table.rows('.selected').data()[0][0]);
+                        alert( table.rows('.selected').data()[0][1]);
+                        alert( table.rows('.selected').data()[0][2]);
+                        alert( table.rows('.selected').data()[0][3]);
+                        alert( table.rows('.selected').data()[0][4]);
+                        alert( table.rows('.selected').data()[0][5]);
+                        alert( table.rows('.selected').data()[0][6]); */
+                        jQuery.noConflict();
+                        $('#myModal').modal('show');
+                        }
+                    }
+                ],
+                columns: [
+                { title: "Product"},
+                { title: "category" },
+                { title: "country" , "visible": false},
+                { title: "creator.", "visible": false},
+                { title: "customer" },
+                { title: "dateCreated" , "visible": false},
+                { title: "dde" , "visible": false},
+                { title: "district", "visible": false,},
+                { title: "fco" , "visible": false},
+                { title: "fileCnt" , "visible": false},
+                { title: "fssName" , "visible": false},
+                { title: "isDeleted" },
+                { title: "isValid" },
+                { title: "location" , "visible": false},
+                { title: "other" , "visible": false},
+                { title: "other2" , "visible": false},
+                { title: "other3" , "visible": false},
+                { title: "partyId" },
+                { title: "productRefusal" , "visible": false},
+                { title: "rdid" , "visible": false},
+                { title: "recId1" , "visible": false},
+                { title: "recId2" , "visible": false},
+                { title: "refusalEmail" , "visible": false},
+                { title: "refusalName" , "visible": false},
+                { title: "refusalReason" , "visible": false},
+                { title: "refusalTitle" , "visible": false},
+                { title: "region" },
+                { title: "repositoryId" , "visible": false},
+                { title: "siteRefusal" , "visible": false},
+                { title: "snCreated" , "visible": false},
+                { title: "srType" , "visible": false},
+                { title: "title" , "visible": false}
+
+            ]
+        } );
+
+       /* $("button").click(function(){
+
+            $('#example').DataTable().ajax.reload();
+        }); */
+
+        $("#row_update").click(function(){
+           jQuery.noConflict();
+           $('#myModal').modal('hide');
+        });
+
+        $('#example tbody').on( 'click', 'tr', function () {
+            if ( $(this).hasClass('selected') ) {
+                $(this).removeClass('selected');
+            }
+            else {
+                table.$('tr.selected').removeClass('selected');
+                $(this).addClass('selected');
+            }
+        } );
+} );
+
+function set_all_seesion() {
+	xhr.setRequestHeader("Access-Control-Allow-Origin", "http://emc.com/");
+        var ga = document.getElementById("_ga").value;
+        setCookie('_ga', ga, 10) ;
+        var amc4 = document.getElementById("AMCV_4").value;
+        setCookie('AMCV_4DD80861515CAB990A490D45%40AdobeOrg', amc4, 10) ;
+        var amc6 = document.getElementById("AMCV_A6").value;
+        setCookie('AMCV_A6F4776A5245B0EA0A490D44%40AdobeOrg', amc6, 10) ;
+        var asp_session = document.getElementById("ASP.NET_SessionId").value;
+        setCookie('ASP.NET_SessionId', asp_session, 10) ;
+        var channl = document.getElementById("s_channelstack").value;
+        setCookie('s_channelstack', channl, 10) ;
+        var s_fid = document.getElementById("s_fid").value;
+        setCookie('s_fid', s_fid, 10) ;
+        var s_vi = document.getElementById("s_vi").value;
+        setCookie('s_vi', s_vi, 10) ;
+}
+
+
+
+function setCookie(cname, cvalue, exdays) {
+  var d = new Date();
+  d.setTime(d.getTime() + (exdays*24*60*60*1000));
+  var expires = "expires="+ d.toUTCString();
+  document.cookie = cname + "=" + cvalue + ";" + expires + ";path=/";
+}
+</script>
+<footer class="footer">
+    <p></p>
+</footer>
+</body>
+</html>
